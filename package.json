@@ -13,9 +13,15 @@
     "*.{js,jsx,ts,tsx,json,css,md}": "echo '🧹 Linting files...' next lint && echo '✨ Ensuring pretty code...' && prettier --write"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.462.0",
     "next": "14.2.18",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "tailwind-merge": "^2.5.5",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^20",
