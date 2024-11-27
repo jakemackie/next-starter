@@ -1,1 +1,3 @@
+sleep 2
+
 npx lint-staged
