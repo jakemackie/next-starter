@@ -10,7 +10,7 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,css,md}": "echo '🧹 Linting files...' npm run lint && echo '✨ Ensuring pretty code...' && prettier --write"
+    "*.{js,jsx,ts,tsx,json,css,md}": "echo '🧹 Linting files...' next lint && echo '✨ Ensuring pretty code...' && prettier --write"
   },
   "dependencies": {
     "next": "14.2.18",
