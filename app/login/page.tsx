@@ -12,8 +12,8 @@ export default function LoginPage() {
   const [loggingIn, setLoggingIn] = useState(false);
   const [signingUp, setSigningUp] = useState(false);
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <form className="max-w-md w-full flex flex-col gap-4">
+    <form className="min-h-screen flex items-center justify-center">
+      <div className="max-w-md w-full flex flex-col gap-4">
         <Label htmlFor="email">Your email address</Label>
         <Input id="email" name="email" type="email" required />
         <Label htmlFor="password">Your password</Label>
@@ -44,7 +44,7 @@ export default function LoginPage() {
           <Spinner className={signingUp ? "animate-spin" : "hidden"} />
           Sign up
         </Button>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }
