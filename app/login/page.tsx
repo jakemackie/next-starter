@@ -22,7 +22,7 @@ export default function LoginPage() {
         <Button
           formAction={login}
           variant="default"
-          className={`${loggingIn ? "opacity-50" : ""}`}
+          className={`${loggingIn ? "opacity-50 pointer-events-none" : ""}`}
           onClick={() => {
             setLoggingIn(true);
             sonner("Logging you in");
@@ -35,7 +35,7 @@ export default function LoginPage() {
         <Button
           formAction={signup}
           variant="secondary"
-          className={`${signingUp ? "opacity-50" : ""}`}
+          className={`${signingUp ? "opacity-50 pointer-events-none" : ""}`}
           onClick={() => {
             setSigningUp(true);
             sonner("Signing you up");
