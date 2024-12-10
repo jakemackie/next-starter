@@ -1,6 +1,4 @@
 import { Spotlight } from "@/components/ui/spotlight";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 
 export default async function Home() {
   return (
@@ -14,9 +12,6 @@ export default async function Home() {
           A starter template that lets you build scalable modern web
           applications that look damn good.
         </p>
-        <Link href="/login" className="mt-4">
-          <Button variant="outline">Login</Button>
-        </Link>
       </div>
     </div>
   );
