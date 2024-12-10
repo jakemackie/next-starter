@@ -13,6 +13,7 @@
     "*.{js,jsx,ts,tsx,json,css,md}": "echo '🧹 Linting files...' next lint && echo '✨ Ensuring pretty code...' && prettier --write"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.1",
     "@prisma/client": "^5.22.0",
     "@radix-ui/react-avatar": "^1.1.1",
     "@radix-ui/react-collapsible": "^1.1.1",
@@ -33,9 +34,11 @@
     "next-themes": "^0.4.3",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.54.0",
     "sonner": "^1.7.0",
     "tailwind-merge": "^2.5.5",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.24.0"
   },
   "devDependencies": {
     "@types/node": "^20",
