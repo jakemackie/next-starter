@@ -16,7 +16,7 @@ import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { loginViaEmail } from "@/app/auth/actions";
+import { login } from "@/actions/account/login";
 import { useRef } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
@@ -37,7 +37,7 @@ export function LoginForm() {
     isPending.current = true;
     const { email, password } = values;
     try {
-      await loginViaEmail(email, password);
+      await login(email, password);
       toast.success("Login successful.");
       router.push("/dashboard");
     } catch (error) {
