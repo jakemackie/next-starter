@@ -1,12 +1,5 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import { loginViaEmail } from "@/app/auth/actions"
-import Link from "next/link"
-
-import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
@@ -15,46 +8,53 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-
-const formSchema = z.object({
-  email: z.string()
-    .min(4, {
-      message: "Email must be at least 4 characters.",
-    })
-    .max(255, {
-      message: "Email too long.",
-    })
-    .email({
-      message: "Invalid email.",
-    }),
-
-  password: z.string()
-    .min(8, {
-      message: "Password must be at least 8 characters.",
-    })
-    .max(255, {
-      message: "Password too long.",
-    })
-})
+} from "@/components/ui/form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { authSchema } from "@/lib/schemas/authSchema";
+import { useForm } from "react-hook-form";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { loginViaEmail } from "@/app/auth/actions";
+import { useRef } from "react";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export function LoginForm() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const router = useRouter();
+  const isPending = useRef(false);
+
+  const form = useForm<z.infer<typeof authSchema>>({
+    resolver: zodResolver(authSchema),
     defaultValues: {
       email: "",
-      password: ""
-    }
-  })
+      password: "",
+    },
+  });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    loginViaEmail(values.email, values.password)
-  }
+  const handleLogin = async (values: z.infer<typeof authSchema>) => {
+    isPending.current = true;
+    const { email, password } = values;
+    try {
+      await loginViaEmail(email, password);
+      toast.success("Login successful.");
+      router.push("/dashboard");
+    } catch (error) {
+      console.error(error);
+      if (error instanceof Error) {
+        toast.error(error.message);
+        isPending.current = false;
+      }
+    }
+  };
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 sm:max-w-md w-full">
+      <form
+        onSubmit={form.handleSubmit(handleLogin)}
+        className="space-y-8 sm:max-w-md w-full"
+      >
         <FormField
           control={form.control}
           name="email"
@@ -81,20 +81,23 @@ export function LoginForm() {
               <FormControl>
                 <Input type="password" {...field} />
               </FormControl>
-              <FormDescription>
-                Please enter your password.
-              </FormDescription>
+              <FormDescription>Please enter your password.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
         <div className="space-y-4">
-          <Button type="submit">Login</Button>
+          <Button type="submit" disabled={isPending.current}>
+            Login
+          </Button>
           <FormDescription>
-            Not registered? <Link className="text-white hover:underline" href="/signup">Create an account</Link>
+            Not registered?{" "}
+            <Link className="text-white hover:underline" href="/signup">
+              Create an account
+            </Link>
           </FormDescription>
         </div>
       </form>
     </Form>
-  )
+  );
 }
