@@ -26,14 +26,14 @@ export async function loginViaEmail(email: string, password: string) {
   redirect("/dashboard");
 }
 
-export async function signup(formData: FormData) {
+export async function signUpViaEmail(email: string, password: string) {
   const supabase = await createClient();
 
   // type-casting here for convenience
   // in practice, you should validate your inputs
   const data = {
-    email: formData.get("email") as string,
-    password: formData.get("password") as string,
+    email: email,
+    password: password,
   };
 
   const { error } = await supabase.auth.signUp(data);
