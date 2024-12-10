@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/shared/navbar"; 
-import { Toaster as Sonner } from "@/components/ui/sonner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,11 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} antialiased dark`}>
-        <Navbar />
-        {children}
-        <Sonner />
-      </body>
+      <body className={`${inter.className} antialiased dark`}>{children}</body>
     </html>
   );
 }

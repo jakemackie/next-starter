@@ -37,10 +37,11 @@ export async function signUpViaEmail(email: string, password: string) {
   revalidatePath("/", "layout");
 }
 
-export async function logout() {
+export const logout = async () => {
   const supabase = await createClient();
+  const { error } = await supabase.auth.signOut();
 
-  await supabase.auth.signOut();
+  if (error) throw new Error(error.message);
 
   revalidatePath("/", "layout");
-}
+};
