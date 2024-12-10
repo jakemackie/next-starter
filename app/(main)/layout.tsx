@@ -9,7 +9,7 @@ export default function MainLayout({
   return (
     <>
       <Navbar />
-      {children}
+      <main className="px-4">{children}</main>
       <Sonner />
     </>
   );
