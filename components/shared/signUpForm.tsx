@@ -3,7 +3,8 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { loginViaEmail, signUpViaEmail } from "@/app/auth/actions"
+import { signUpViaEmail } from "@/app/auth/actions"
+import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -42,8 +43,8 @@ export function SignUpForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "example@mail.com",
-      password: "password",
+      email: "",
+      password: "",
     },
   })
 
@@ -61,7 +62,7 @@ export function SignUpForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Input placeholder="example@email.com" {...field} />
               </FormControl>
               <FormDescription>
                 Please enter your email address.
@@ -87,7 +88,12 @@ export function SignUpForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <div className="space-y-4">
+          <Button type="submit">Sign up</Button>
+          <FormDescription>
+            Already have an account? <Link className="text-white hover:underline" href="/login">Login</Link>
+          </FormDescription>
+        </div>
       </form>
     </Form>
   )

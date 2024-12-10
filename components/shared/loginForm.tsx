@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { loginViaEmail } from "@/app/auth/actions"
+import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -42,9 +43,9 @@ export function LoginForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "example@mail.com",
-      password: "password",
-    },
+      email: "",
+      password: ""
+    }
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
@@ -61,7 +62,7 @@ export function LoginForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Input placeholder="example@email.com" {...field} />
               </FormControl>
               <FormDescription>
                 Please enter your email address.
@@ -87,7 +88,12 @@ export function LoginForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <div className="space-y-4">
+          <Button type="submit">Login</Button>
+          <FormDescription>
+            Not registered? <Link className="text-white hover:underline" href="/signup">Create an account</Link>
+          </FormDescription>
+        </div>
       </form>
     </Form>
   )
