@@ -1,7 +1,6 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 
 export async function loginViaEmail(email: string, password: string) {
@@ -16,14 +15,9 @@ export async function loginViaEmail(email: string, password: string) {
 
   const { error } = await supabase.auth.signInWithPassword(data);
 
-  console.log(error);
-
-  if (error) {
-    redirect("/error");
-  }
+  if (error) throw new Error(error.message);
 
   revalidatePath("/", "layout");
-  redirect("/dashboard");
 }
 
 export async function signUpViaEmail(email: string, password: string) {
@@ -38,12 +32,9 @@ export async function signUpViaEmail(email: string, password: string) {
 
   const { error } = await supabase.auth.signUp(data);
 
-  if (error) {
-    redirect("/error");
-  }
+  if (error) throw new Error(error.message);
 
   revalidatePath("/", "layout");
-  redirect("/");
 }
 
 export async function logout() {
@@ -52,5 +43,4 @@ export async function logout() {
   await supabase.auth.signOut();
 
   revalidatePath("/", "layout");
-  redirect("/");
 }
