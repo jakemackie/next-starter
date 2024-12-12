@@ -17,10 +17,13 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { login } from "@/actions/auth/login";
-import { oauth } from "@/actions/auth/oauth";
 import { useRef } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import OAuthProvider from "@/components/shared/oauthProvider";
+import GitHub from "../ui/icons/github";
+import Discord from "../ui/icons/discord";
+import BackButton from "./backButton";
 
 export function LoginForm() {
   const router = useRouter();
@@ -51,11 +54,15 @@ export function LoginForm() {
   };
 
   return (
-    <>
-      <Form {...form}>
+    <Form {...form}>
+      <div className="sm:max-w-md w-full">
+        <div className="mb-12">
+          <BackButton />
+        </div>
+
         <form
           onSubmit={form.handleSubmit(handleLogin)}
-          className="space-y-8 mb-8 sm:max-w-md w-full"
+          className="space-y-8 mb-8"
         >
           <FormField
             control={form.control}
@@ -89,7 +96,11 @@ export function LoginForm() {
             )}
           />
           <div className="space-y-4">
-            <Button type="submit" disabled={isPending.current}>
+            <Button
+              type="submit"
+              disabled={isPending.current}
+              className="w-full"
+            >
               Login
             </Button>
             <FormDescription>
@@ -101,19 +112,23 @@ export function LoginForm() {
           </div>
         </form>
 
+        <div className="border w-full mb-6" />
+
         {/* OAuth Providers */}
-        <form
-          className="space-y-8 sm:max-w-md w-full"
-          onSubmit={async (event) => {
-            event.preventDefault();
-            await oauth("github");
-          }}
-        >
-          <Button type="submit" variant="outline">
-            GitHub
-          </Button>
-        </form>
-      </Form>
-    </>
+        <div className="grid grid-cols-3 gap-2">
+          <OAuthProvider provider="github">
+            <Button type="submit" variant="secondary" className="w-full h-auto">
+              <GitHub className="size-5 text-foreground" />
+            </Button>
+          </OAuthProvider>
+
+          <OAuthProvider provider="discord">
+            <Button type="submit" variant="secondary" className="w-full h-auto">
+              <Discord className="size-5 text-foreground" />
+            </Button>
+          </OAuthProvider>
+        </div>
+      </div>
+    </Form>
   );
 }
