@@ -13,12 +13,12 @@ import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 import { redirect } from "next/navigation";
-import { createClient } from "@/utils/supabase/server";
-import { AppSidebar } from "@/components/app-sidebar"
-import { Separator } from "@/components/ui/separator"
+import { createClient } from "@/supabase/server";
+import { AppSidebar } from "@/components/app-sidebar";
+import { Separator } from "@/components/ui/separator";
 
 export default async function DashboardLayout({
   children,
@@ -32,9 +32,10 @@ export default async function DashboardLayout({
     redirect("/login");
   }
 
-  const user = { 
-    name: data.user.user_metadata.full_name ?? data.user.email?.slice(0, 2) ?? "",
-    email: data.user.email ?? "" 
+  const user = {
+    name:
+      data.user.user_metadata.full_name ?? data.user.email?.slice(0, 2) ?? "",
+    email: data.user.email ?? "",
   };
 
   return (
@@ -49,9 +50,7 @@ export default async function DashboardLayout({
               <Breadcrumb>
                 <BreadcrumbList>
                   <BreadcrumbItem className="hidden md:block">
-                    <BreadcrumbLink href="/">
-                      Home
-                    </BreadcrumbLink>
+                    <BreadcrumbLink href="/">Home</BreadcrumbLink>
                   </BreadcrumbItem>
                   <BreadcrumbSeparator className="hidden md:block" />
                   <BreadcrumbItem>
@@ -61,13 +60,11 @@ export default async function DashboardLayout({
               </Breadcrumb>
             </div>
           </header>
-          <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-            {children}
-          </div>
+          <div className="flex flex-1 flex-col gap-4 p-4 pt-0">{children}</div>
         </SidebarInset>
       </SidebarProvider>
 
       <Sonner />
     </>
-  )
+  );
 }
