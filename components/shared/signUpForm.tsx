@@ -16,7 +16,7 @@ import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { signUp } from "@/actions/account/signup";
+import { signUp } from "@/actions/auth/signup";
 import { useRef } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";

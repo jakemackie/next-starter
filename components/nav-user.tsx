@@ -28,7 +28,7 @@ import {
 
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { logout } from "@/actions/account/logout";
+import { logout } from "@/actions/auth/logout";
 
 export function NavUser({
   user,
