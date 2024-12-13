@@ -1,7 +1,7 @@
 import React from "react";
 
 import { cn } from "@/lib/utils";
-const ChevronLeft = React.forwardRef<
+const ChevronRight = React.forwardRef<
   SVGSVGElement,
   React.SVGProps<SVGSVGElement>
 >(({ className, ...props }, ref) => (
@@ -12,14 +12,16 @@ const ChevronLeft = React.forwardRef<
     xmlns="http://www.w3.org/2000/svg"
     width="20"
     height="20"
-    viewBox="0 0 1024 1024"
+    viewBox="0 0 24 24"
   >
     <path
       fill="currentColor"
-      d="M685.248 104.704a64 64 0 0 1 0 90.496L368.448 512l316.8 316.8a64 64 0 0 1-90.496 90.496L232.704 557.248a64 64 0 0 1 0-90.496l362.048-362.048a64 64 0 0 1 90.496 0"
+      fill-rule="evenodd"
+      d="M7.293 3.293a1 1 0 0 1 1.414 0l8 8a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414-1.414L14.586 12L7.293 4.707a1 1 0 0 1 0-1.414"
+      clip-rule="evenodd"
     />
   </svg>
 ));
 
-ChevronLeft.displayName = "Chevron left";
-export default ChevronLeft;
+ChevronRight.displayName = "Discord";
+export default ChevronRight;

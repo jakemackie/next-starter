@@ -91,4 +91,10 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+  .min-h-fit-screen {
+    @apply min-h-[calc(100vh-3.25rem)];
+  }
+  .mt-content {
+    @apply mt-12 md:mt-16 lg:mt-24;
+  }
 }
