@@ -1,6 +1,7 @@
 This is a [Next.js](https://nextjs.org/) starer template where I maintain and improve upon a template repository I will use to begin any project with this tech stack.
 
 ### Features:
+
 - Database setup with [Prisma ORM](https://prisma.io/) & [Supabase](https://supabase.com/)
 - Authentication
 - Type-safe validation using [Zod](https://zod.dev/)
@@ -8,6 +9,7 @@ This is a [Next.js](https://nextjs.org/) starer template where I maintain and im
 - [Tailwind CSS](https://tailwindcss.com/) styling
 
 ### Setup
+
 ```bash
 npm install
 ```
