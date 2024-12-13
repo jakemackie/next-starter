@@ -23,7 +23,6 @@ import { toast } from "sonner";
 import OAuthProvider from "@/components/shared/oauthProvider";
 import GitHub from "../ui/icons/github";
 import Discord from "../ui/icons/discord";
-import BackButton from "./backButton";
 
 export function SignUpForm() {
   const router = useRouter();
