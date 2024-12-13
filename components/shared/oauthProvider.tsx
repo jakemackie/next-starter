@@ -15,7 +15,20 @@ export default function OAuthProvider({
     <form
       onSubmit={async (event) => {
         event.preventDefault();
-        await oauth(provider);
+
+        const button = event.currentTarget.querySelector("button");
+
+        if (button) {
+          button.setAttribute("disabled", "true");
+        }
+
+        try {
+          await oauth(provider);
+        } catch {
+          if (button) {
+            button.removeAttribute("disabled");
+          }
+        }
       }}
     >
       {children}

@@ -8,7 +8,7 @@ export default function LoginPage() {
   return (
     <div className="h-screen w-full flex flex-col lg:grid grid-cols-2 lg:gap-0">
       {/* Form Section */}
-      <div className="mx-auto md:max-w-xl w-full h-full p-4 col-span-1 flex flex-col lg:justify-center order-last lg:order-first">
+      <div className="mx-auto sm:max-w-md w-full h-full p-4 col-span-1 flex flex-col lg:justify-center order-last lg:order-first">
         <div className="w-fit my-6">
           <BackButton />
         </div>
