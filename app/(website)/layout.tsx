@@ -9,7 +9,9 @@ export default function MainLayout({
   return (
     <>
       <Navbar />
-      <main className="px-4">{children}</main>
+      <main className="min-h-fit-screen w-full flex flex-col items-center">
+        {children}
+      </main>
       <Sonner />
     </>
   );

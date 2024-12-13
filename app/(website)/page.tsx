@@ -1,17 +1,48 @@
-import { Spotlight } from "@/components/ui/spotlight";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import ChevronRight from "@/components/ui/icons/chevronRight";
 
 export default async function Home() {
   return (
-    <div className="min-h-[90vh] w-full rounded-md flex md:items-center md:justify-center antialiased bg-grid-white/[0.02] relative overflow-hidden">
-      <Spotlight className="-top-40 left-0 md:left-60" fill="white" />
-      <div className="flex flex-col items-center p-4 max-w-7xl mx-auto relative z-10 w-full pt-40 md:pt-0">
-        <h1 className="text-4xl md:text-7xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50">
-          Next starter <br /> template.
+    <div className="mx-auto mt-content relative container px-4 md:px-0">
+      {/* Heading, subtext and CTAs */}
+      <div className="mx-auto max-w-sm md:max-w-screen-lg">
+        {/* Heading */}
+        <h1 className="text-5xl lg:text-6xl text-center md:text-left font-semibold leading-tight md:leading-snug tracking-tighter">
+          {/* Mobile */}
+          <span className="block md:hidden">
+            Sell your idea to an audience.
+          </span>
+          {/* Desktop */}
+          <span className="hidden md:block">
+            Next starter let&rsquo;s you sell your idea to an audience.
+          </span>
         </h1>
-        <p className="mt-4 font-normal text-base text-neutral-300 max-w-lg text-center mx-auto">
-          A starter template that lets you build scalable modern web
-          applications that look damn good.
-        </p>
+
+        {/* Subtext */}
+        <div className="max-w-screen-md">
+          <p className="mt-4 md:mt-8 font-medium text-xl text-muted-foreground text-center text-balance md:text-left leading-snug tracking-tight">
+            A short description of what you&rsquo;re offering, the problem it
+            solves and why it&rsquo;s better than the competition.
+          </p>
+        </div>
+
+        {/* CTAs */}
+        <div className="mt-8 flex flex-col md:flex-row items-center justify-center md:justify-start gap-4">
+          <Link href={"/login"}>
+            <Button className="w-fit py-5 md:py-6 px-6 rounded-lg text-base md:text-lg">
+              Get started
+            </Button>
+          </Link>
+
+          <Button
+            className="w-fit py-5 md:py-6 px-6 rounded-lg text-base md:text-lg"
+            variant="ghost"
+          >
+            Introducing our newest feature
+            <ChevronRight />
+          </Button>
+        </div>
       </div>
     </div>
   );
