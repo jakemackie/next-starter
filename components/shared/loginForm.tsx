@@ -56,23 +56,41 @@ export function LoginForm() {
     <Form {...form}>
       <div>
         {/* OAuth Providers */}
-        <div className="w-full flex flex-col gap-2 lg:grid grid-cols-3">
+        <div className="w-full flex flex-col gap-2">
           <OAuthProvider provider="github">
-            <Button type="submit" variant="outline" className="w-full h-auto">
-              <GitHub />
-              <span className="lg:hidden">GitHub</span>
+            <Button
+              type="submit"
+              variant="outline"
+              className="w-full h-auto flex items-center justify-center space-x-2 rounded-3xl"
+            >
+              <GitHub className="!size-6" />
+              <span className="flex-1 text-center pr-9">
+                Continue with GitHub
+              </span>
             </Button>
           </OAuthProvider>
 
           <OAuthProvider provider="discord">
-            <Button type="submit" variant="outline" className="w-full h-auto">
-              <Discord />
-              <span className="lg:hidden">Discord</span>
+            <Button
+              type="submit"
+              variant="outline"
+              className="w-full h-auto flex items-center justify-center space-x-2 rounded-3xl"
+            >
+              <Discord className="!size-6" />
+              <span className="flex-1 text-center pr-9">
+                Continue with Discord
+              </span>
             </Button>
           </OAuthProvider>
         </div>
 
-        <div className="border w-full my-6" />
+        <div className="flex items-center w-full my-6">
+          <div className="flex-grow border-t border-input"></div>
+          <span className="px-4 text-xs text-muted-foreground uppercase">
+            Or
+          </span>
+          <div className="flex-grow border-t border-input"></div>
+        </div>
 
         <form
           onSubmit={form.handleSubmit(handleLogin)}
