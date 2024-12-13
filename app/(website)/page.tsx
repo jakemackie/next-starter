@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import ChevronRight from "@/components/ui/icons/chevronRight";
+import Image from "next/image";
 
 export default async function Home() {
   return (
@@ -43,6 +44,17 @@ export default async function Home() {
             <ChevronRight />
           </Button>
         </div>
+      </div>
+
+      {/* Hero media */}
+      <div className="w-full h-96 md:h-[48rem] p-1 bg-foreground relative mt-8 md:mt-16 rounded-xl overflow-clip">
+        <Image
+          src="/image.jpg"
+          alt="Hero image"
+          width={600}
+          height={400}
+          className="size-full rounded-lg object-cover"
+        />
       </div>
     </div>
   );
