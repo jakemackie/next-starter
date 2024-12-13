@@ -23,7 +23,6 @@ import { toast } from "sonner";
 import OAuthProvider from "@/components/shared/oauthProvider";
 import GitHub from "../ui/icons/github";
 import Discord from "../ui/icons/discord";
-import BackButton from "./backButton";
 
 export function LoginForm() {
   const router = useRouter();
@@ -55,10 +54,25 @@ export function LoginForm() {
 
   return (
     <Form {...form}>
-      <div className="sm:max-w-md w-full">
-        <div className="mb-12">
-          <BackButton />
+      <div>
+        {/* OAuth Providers */}
+        <div className="w-full flex flex-col gap-2 lg:grid grid-cols-3">
+          <OAuthProvider provider="github">
+            <Button type="submit" variant="outline" className="w-full h-auto">
+              <GitHub />
+              <span className="lg:hidden">GitHub</span>
+            </Button>
+          </OAuthProvider>
+
+          <OAuthProvider provider="discord">
+            <Button type="submit" variant="outline" className="w-full h-auto">
+              <Discord />
+              <span className="lg:hidden">Discord</span>
+            </Button>
+          </OAuthProvider>
         </div>
+
+        <div className="border w-full my-6" />
 
         <form
           onSubmit={form.handleSubmit(handleLogin)}
@@ -69,7 +83,7 @@ export function LoginForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>Email Address</FormLabel>
                 <FormControl>
                   <Input placeholder="example@email.com" {...field} />
                 </FormControl>
@@ -105,29 +119,12 @@ export function LoginForm() {
             </Button>
             <FormDescription>
               Not registered?{" "}
-              <Link className="text-white hover:underline" href="/signup">
+              <Link className="text-foreground hover:underline" href="/signup">
                 Create an account
               </Link>
             </FormDescription>
           </div>
         </form>
-
-        <div className="border w-full mb-6" />
-
-        {/* OAuth Providers */}
-        <div className="grid grid-cols-3 gap-2">
-          <OAuthProvider provider="github">
-            <Button type="submit" variant="secondary" className="w-full h-auto">
-              <GitHub className="size-5 text-foreground" />
-            </Button>
-          </OAuthProvider>
-
-          <OAuthProvider provider="discord">
-            <Button type="submit" variant="secondary" className="w-full h-auto">
-              <Discord className="size-5 text-foreground" />
-            </Button>
-          </OAuthProvider>
-        </div>
       </div>
     </Form>
   );
