@@ -91,4 +91,8 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+
+  svg {
+    @apply !size-6 text-foreground;
+  }
 }

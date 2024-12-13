@@ -55,10 +55,25 @@ export function SignUpForm() {
 
   return (
     <Form {...form}>
-      <div className="sm:max-w-md w-full">
-        <div className="mb-12">
-          <BackButton />
+      <div>
+        {/* OAuth Providers */}
+        <div className="w-full flex flex-col gap-2 lg:grid grid-cols-3">
+          <OAuthProvider provider="github">
+            <Button type="submit" variant="outline" className="w-full h-auto">
+              <GitHub />
+              <span className="lg:hidden">GitHub</span>
+            </Button>
+          </OAuthProvider>
+
+          <OAuthProvider provider="discord">
+            <Button type="submit" variant="outline" className="w-full h-auto">
+              <Discord />
+              <span className="lg:hidden">Discord</span>
+            </Button>
+          </OAuthProvider>
         </div>
+
+        <div className="border w-full my-6" />
 
         <form
           onSubmit={form.handleSubmit(handleSignUp)}
@@ -69,7 +84,7 @@ export function SignUpForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>Email Address</FormLabel>
                 <FormControl>
                   <Input placeholder="example@email.com" {...field} />
                 </FormControl>
@@ -105,29 +120,12 @@ export function SignUpForm() {
             </Button>
             <FormDescription>
               Already have an account?{" "}
-              <Link className="text-white hover:underline" href="/login">
+              <Link className="text-foreground hover:underline" href="/login">
                 Login
               </Link>
             </FormDescription>
           </div>
         </form>
-
-        <div className="border w-full mb-6" />
-
-        {/* OAuth Providers */}
-        <div className="grid grid-cols-3 gap-2">
-          <OAuthProvider provider="github">
-            <Button type="submit" variant="secondary" className="w-full h-auto">
-              <GitHub className="size-5" />
-            </Button>
-          </OAuthProvider>
-
-          <OAuthProvider provider="discord">
-            <Button type="submit" variant="secondary" className="w-full h-auto">
-              <Discord className="size-5" />
-            </Button>
-          </OAuthProvider>
-        </div>
       </div>
     </Form>
   );
