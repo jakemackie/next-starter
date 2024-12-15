@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { PostHogProvider } from "./providers";
+import { ThemeProvider } from "@/components/theme-provioder";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,8 +21,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} antialiased dark`}>
-        <PostHogProvider>{children}</PostHogProvider>
+      <body className={`${inter.className} antialiased`}>
+        <PostHogProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </PostHogProvider>
       </body>
     </html>
   );

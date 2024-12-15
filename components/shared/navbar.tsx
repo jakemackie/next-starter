@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import {
@@ -12,6 +10,8 @@ import {
 } from "@/components/ui/navigation-menu";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { createClient } from "@/supabase/server";
 
 const aboutNavItems: { title: string; href: string; description: string }[] = [
   {
@@ -47,47 +47,17 @@ const aboutNavItems: { title: string; href: string; description: string }[] = [
   },
 ];
 
-const supportNavItems: { title: string; href: string; description: string }[] =
-  [
-    {
-      title: "Help Center",
-      href: "/support/help-center",
-      description: "Find answers to common questions and troubleshooting tips.",
-    },
-    {
-      title: "Documentation",
-      href: "/support/documentation",
-      description: "Access detailed guides and technical documentation.",
-    },
-    {
-      title: "Community Forum",
-      href: "/support/forum",
-      description: "Connect with other users and share your experiences.",
-    },
-    {
-      title: "Submit a Ticket",
-      href: "/support/ticket",
-      description: "Reach out to our support team for personalized assistance.",
-    },
-    {
-      title: "System Status",
-      href: "/support/system-status",
-      description: "View real-time updates on our system's operational status.",
-    },
-    {
-      title: "Live Chat",
-      href: "/support/live-chat",
-      description: "Get instant support from our team via live chat.",
-    },
-  ];
+export default async function Navbar() {
+  const supabase = await createClient();
 
-export default function Navbar() {
+  const { data, error } = await supabase.auth.getUser();
+
   return (
-    <NavigationMenu className="z-50 w-full mx-auto md:max-w-screen-md py-2">
+    <NavigationMenu className="z-50 w-full mx-auto max-w-none md:max-w-screen-lg flex justify-between p-2">
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>About us</NavigationMenuTrigger>
-          <NavigationMenuContent>
+          <NavigationMenuContent className="m-2">
             <ul className="grid w-full gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {aboutNavItems.map((item) => (
                 <ListItem key={item.title} title={item.title} href={item.href}>
@@ -97,35 +67,36 @@ export default function Navbar() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
+      </NavigationMenuList>
 
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Support</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-full gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {supportNavItems.map((item) => (
-                <ListItem key={item.title} title={item.title} href={item.href}>
-                  {item.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
+      <NavigationMenuList>
+        {!error && data?.user ? (
+          <NavigationMenuItem>
+            <Link href="/dashboard" legacyBehavior passHref>
+              <Button variant="secondary">Go to dashboard</Button>
+            </Link>
+          </NavigationMenuItem>
+        ) : null}
 
-        <NavigationMenuItem>
-          <Link href="/login" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Login
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
+        {error || !data?.user ? (
+          <NavigationMenuItem>
+            <Link href="/login" legacyBehavior passHref>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                Login
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+        ) : null}
 
-        <NavigationMenuItem>
-          <Link href="/signup" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Sign up
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
+        {error || !data?.user ? (
+          <NavigationMenuItem>
+            <Link href="/signup" legacyBehavior passHref>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                Sign up
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+        ) : null}
       </NavigationMenuList>
     </NavigationMenu>
   );
@@ -155,4 +126,5 @@ const ListItem = React.forwardRef<
     </li>
   );
 });
+
 ListItem.displayName = "ListItem";
