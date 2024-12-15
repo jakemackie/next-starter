@@ -151,7 +151,7 @@ export function AppSidebar({
   user,
   ...props
 }: React.ComponentProps<typeof Sidebar> & {
-  user: { name: string; email: string };
+  user: { avatar: string; name: string; email: string };
 }) {
   return (
     <Sidebar variant="inset" {...props}>
