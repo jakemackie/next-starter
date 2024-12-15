@@ -1,10 +1,8 @@
-"use client";
-
 import { SignUpForm } from "@/components/shared/signUpForm";
 
 export default function SignUpPage() {
   return (
-    <div className="w-full flex flex-col">
+    <div className="min-h-fit-screen w-full flex flex-col lg:justify-center">
       {/* Form Section */}
       <div className="mt-8 mx-auto sm:max-w-md w-full h-full p-4 col-span-1 flex flex-col lg:justify-center">
         <div className="mb-6">
