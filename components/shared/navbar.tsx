@@ -83,12 +83,12 @@ const supportNavItems: { title: string; href: string; description: string }[] =
 
 export default function Navbar() {
   return (
-    <NavigationMenu className="z-50 w-full mx-auto max-w-screen-md py-2">
+    <NavigationMenu className="z-50 w-full mx-auto md:max-w-screen-md py-2">
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>About us</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+            <ul className="grid w-full gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {aboutNavItems.map((item) => (
                 <ListItem key={item.title} title={item.title} href={item.href}>
                   {item.description}
@@ -101,7 +101,7 @@ export default function Navbar() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Support</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+            <ul className="grid w-full gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {supportNavItems.map((item) => (
                 <ListItem key={item.title} title={item.title} href={item.href}>
                   {item.description}
