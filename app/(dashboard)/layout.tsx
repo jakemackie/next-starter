@@ -34,8 +34,7 @@ export default async function DashboardLayout({
 
   const user = {
     avatar: data.user.user_metadata.avatar_url ?? "",
-    name:
-      data.user.user_metadata.full_name ?? data.user.email?.slice(0, 2) ?? "",
+    name: data.user.user_metadata.name ?? data.user.email?.slice(0, 2) ?? "",
     email: data.user.email ?? "",
   };
 
