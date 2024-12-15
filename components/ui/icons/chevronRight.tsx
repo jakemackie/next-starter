@@ -1,6 +1,6 @@
 import React from "react";
-
 import { cn } from "@/lib/utils";
+
 const ChevronRight = React.forwardRef<
   SVGSVGElement,
   React.SVGProps<SVGSVGElement>

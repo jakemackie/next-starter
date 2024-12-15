@@ -95,6 +95,6 @@ body {
     @apply min-h-[calc(100vh-3.25rem)];
   }
   .mt-content {
-    @apply mt-12 md:mt-16 lg:mt-24;
+    @apply mt-12 md:mt-16 lg:mt-20;
   }
 }
