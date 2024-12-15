@@ -2,22 +2,16 @@
 
 import { SignUpForm } from "@/components/shared/signUpForm";
 import Image from "next/image";
-import BackButton from "@/components/shared/backButton";
 
 export default function SignUp() {
   return (
     <div className="h-screen w-full flex flex-col lg:grid grid-cols-2 lg:gap-0">
       {/* Form Section */}
-      <div className="mx-auto sm:max-w-md w-full h-full p-4 col-span-1 flex flex-col lg:justify-center order-last lg:order-first">
-        <div className="w-fit my-6">
-          <BackButton />
-        </div>
-
+      <div className="mt-8 mx-auto sm:max-w-md w-full h-full p-4 col-span-1 flex flex-col lg:justify-center order-last lg:order-first">
         <div className="mb-6">
-          <h3 className="text-2xl font-semibold">Create an account</h3>
-          <p className="text-muted-foreground">
-            Please enter your details to sign up.
-          </p>
+          <h3 className="text-2xl text-center md:text-left font-semibold tracking-tight">
+            Create an account
+          </h3>
         </div>
         <SignUpForm />
       </div>

@@ -55,6 +55,62 @@ export function SignUpForm() {
   return (
     <Form {...form}>
       <div>
+        <form
+          onSubmit={form.handleSubmit(handleSignUp)}
+          className="space-y-4 mb-4"
+        >
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email Address</FormLabel>
+                <FormControl>
+                  <Input placeholder="example@email.com" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input type="password" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <div className="space-y-4">
+            <Button
+              type="submit"
+              disabled={isPending.current}
+              className="w-full"
+            >
+              Sign up
+            </Button>
+            <FormDescription>
+              Already have an account?{" "}
+              <Link className="text-foreground hover:underline" href="/login">
+                Login
+              </Link>
+            </FormDescription>
+          </div>
+        </form>
+
+        <div className="flex items-center w-full my-6">
+          <div className="flex-grow border-t border-input"></div>
+          <span className="px-4 text-xs text-muted-foreground uppercase">
+            Or
+          </span>
+          <div className="flex-grow border-t border-input"></div>
+        </div>
+
         {/* OAuth Providers */}
         <div className="w-full flex flex-col gap-2">
           <OAuthProvider provider="github">
@@ -83,66 +139,6 @@ export function SignUpForm() {
             </Button>
           </OAuthProvider>
         </div>
-
-        <div className="flex items-center w-full my-6">
-          <div className="flex-grow border-t border-input"></div>
-          <span className="px-4 text-xs text-muted-foreground uppercase">
-            Or
-          </span>
-          <div className="flex-grow border-t border-input"></div>
-        </div>
-
-        <form
-          onSubmit={form.handleSubmit(handleSignUp)}
-          className="space-y-8 mb-8"
-        >
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email Address</FormLabel>
-                <FormControl>
-                  <Input placeholder="example@email.com" {...field} />
-                </FormControl>
-                <FormDescription>
-                  Please enter your email address.
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Password</FormLabel>
-                <FormControl>
-                  <Input type="password" {...field} />
-                </FormControl>
-                <FormDescription>Please enter your password.</FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <div className="space-y-4">
-            <Button
-              type="submit"
-              disabled={isPending.current}
-              className="w-full"
-            >
-              Sign up
-            </Button>
-            <FormDescription>
-              Already have an account?{" "}
-              <Link className="text-foreground hover:underline" href="/login">
-                Login
-              </Link>
-            </FormDescription>
-          </div>
-        </form>
       </div>
     </Form>
   );
