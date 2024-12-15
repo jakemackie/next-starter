@@ -52,7 +52,7 @@ export default async function Home() {
         </div>
 
         {/* Hero media */}
-        <div className="w-full h-auto aspect-video p-1 bg-foreground relative mt-12 md:mt-32 rounded-xl overflow-clip">
+        <div className="w-full h-auto aspect-video border-2 border-foreground mt-12 md:mt-32 rounded-xl overflow-clip">
           <Image
             src="/image.jpg"
             alt="Hero image"
