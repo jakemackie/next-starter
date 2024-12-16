@@ -39,6 +39,9 @@ export function LoginForm() {
   const handleLogin = async (values: z.infer<typeof authSchema>) => {
     isPending.current = true;
     const { email, password } = values;
+
+    toast.info("Logging you in...");
+
     try {
       await login(email, password);
       toast.success("Login successful.");
