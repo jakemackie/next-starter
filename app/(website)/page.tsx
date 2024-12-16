@@ -15,7 +15,7 @@ export default async function Home() {
         </div>
 
         {/* Heading */}
-        <h1 className="text-5xl lg:text-6xl text-center md:text-left font-semibold leading-tight md:leading-snug tracking-tighter">
+        <h1 className="text-5xl md:text-6xl lg:text-7xl text-center md:text-left font-semibold leading-tight md:leading-snug tracking-tighter">
           {/* Mobile */}
           <span className="block md:hidden">
             Sell your idea to an audience.

@@ -15,10 +15,9 @@ import { createClient } from "@/supabase/server";
 
 const aboutNavItems: { title: string; href: string; description: string }[] = [
   {
-    title: "Our Mission",
-    href: "/about/mission",
-    description:
-      "Learn about our core values and what drives our company forward.",
+    title: "FAQs",
+    href: "/faqs",
+    description: "A list of frequently asked questions."
   },
   {
     title: "Our Team",
@@ -55,6 +54,13 @@ export default async function Navbar() {
   return (
     <NavigationMenu className="z-50 w-full mx-auto max-w-none md:max-w-screen-lg flex justify-between p-2">
       <NavigationMenuList>
+        <NavigationMenuItem>
+          <Link href="/" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Home
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuTrigger>About us</NavigationMenuTrigger>
           <NavigationMenuContent className="m-2">
