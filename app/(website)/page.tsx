@@ -39,7 +39,7 @@ export default async function Home() {
             <span className="hidden md:block">
               A medium description of what you&rsquo;re offering, the problem it
               solves and not only why, but how it&rsquo;s better than the competition.
-              You've given them a simple solution to a complex problem.
+              You&rsquo;ve given them a simple solution to a complex problem.
             </span>
           </p>
         </div>
