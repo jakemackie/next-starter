@@ -8,29 +8,39 @@ export default async function Home() {
   return (
     <div className="mx-auto mt-content relative container px-4 lg:px-0">
       {/* Heading, subtext and CTAs */}
-      <div className="mx-auto max-w-sm md:max-w-screen-lg">
+      <div className="mx-auto max-w-sm md:max-w-xl lg:max-w-screen-md">
         {/* Alert button */}
         <div className="mx-auto text-center mb-8">
           <AlertButton>We&rsquo;re now GDPR compliant</AlertButton>
         </div>
 
         {/* Heading */}
-        <h1 className="text-5xl md:text-6xl lg:text-7xl text-center md:text-left font-semibold leading-tight md:leading-snug tracking-tighter">
+        <h1 className="text-5xl lg:text-7xl text-center md:text-left font-semibold leading-tight md:leading-snug tracking-tighter">
           {/* Mobile */}
           <span className="block md:hidden">
             Sell your idea to an audience.
           </span>
           {/* Desktop */}
           <span className="hidden md:block">
-            Next starter let&rsquo;s you sell your idea to an audience.
+            Next starter let&rsquo;s you sell your idea to the masses.
           </span>
         </h1>
 
         {/* Subtext */}
         <div className="max-w-screen-md">
-          <p className="mt-4 md:mt-8 font-medium text-xl text-muted-foreground text-center text-balance md:text-left leading-snug tracking-tight">
-            A short description of what you&rsquo;re offering, the problem it
-            solves and why it&rsquo;s better than the competition.
+          <p className="max-w-2xl mt-4 md:mt-8 font-medium text-xl text-muted-foreground text-center text-balance md:text-pretty md:text-left leading-snug tracking-tight">
+            {/* Mobile */}
+            <span className="block md:hidden">  
+              A short description of what you&rsquo;re offering, the problem it
+              solves and why it&rsquo;s better than the competition.
+            </span>
+
+            {/* Desktop */}
+            <span className="hidden md:block">
+              A medium description of what you&rsquo;re offering, the problem it
+              solves and not only why, but how it&rsquo;s better than the competition.
+              You've given them a simple solution to a complex problem.
+            </span>
           </p>
         </div>
 
